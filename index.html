@@ -1,159 +1,199 @@
-<!DOCTYPE html>
-<html lang="ar" class="light-style layout-menu-fixed" dir="rtl" data-theme="theme-default">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<!DOCTYPE html><html lang="ar" class="light-style layout-menu-fixed" dir="rtl" data-theme="theme-default"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <title>لوحة التحكم - توبال فليكسي</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
 
   <!-- Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-  <!-- Core CSS -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- Core CSS (Sneat) -->
+  <link rel="stylesheet" href="https://tobalflexy.com/assets/vendor/css/rtl/core.css" class="template-customizer-core-css">
+  <link rel="stylesheet" href="https://tobalflexy.com/assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css">
+  <link rel="stylesheet" href="https://tobalflexy.com/assets/css/rtl/demo.css">
+
+  <!-- Core JS -->
+  <script src="https://tobalflexy.com/assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="https://tobalflexy.com/assets/vendor/js/bootstrap.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
 
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-  <div class="app-container">
-    <!-- Sidebar Menu (RTL - on the right) -->
-    <div class="sidebar" id="sidebarMenu">
-      <div class="logo-section">
-        <a href="#" class="logo-link">
-          <span class="logo-primary">TOBAL</span> FLEXY
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container" id="main-layout-container">
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class="app-brand demo justify-content-center mt-3 mb-3">
+        <a href="#" class="app-brand-link gap-2">
+            <span class="app-brand-logo demo text-primary" style="font-size: 24px;">
+                <i class="fas fa-satellite-dish"></i>
+            </span>
+            <span class="app-brand-text demo text-body fw-bolder" style="font-size: 20px;">TOBAL FLEXY</span>
         </a>
-      </div>
-      
-      <div class="menu-inner">
-        <div class="menu-header">الرئيسية</div>
-        <div class="menu-item active" onclick="switchTab('dashboard', this)">
-          <i class="bx bx-home-circle"></i>
-          <span>لوحة التحكم</span>
-        </div>
-        <div class="menu-item" onclick="switchTab('flexy-recharge', this)">
-          <i class="bx bx-mobile-alt"></i>
-          <span>فليكسي</span>
-        </div>
-        <div class="menu-item" onclick="switchTab('idoom-recharge', this)">
-          <i class="bx bx-wifi"></i>
-          <span>تفعيل إيدوم تلقائياً</span>
-        </div>
-        
-        <div class="menu-header">إدارة المخزون</div>
-        <div class="menu-item" onclick="switchTab('cards', this)">
-          <i class="bx bx-card"></i>
-          <span>بطاقات التعبئة</span>
-        </div>
-        
-        <div class="menu-header">المبيعات والشبكة</div>
-        <div class="menu-item" onclick="switchTab('transactions', this)">
-          <i class="bx bx-transfer-alt"></i>
-          <span>سجل العمليات</span>
-        </div>
-        
-        <div class="menu-item" onclick="switchTab('agents', this)">
-          <i class="bx bx-group"></i>
-          <span>الزبائن والموزعين</span>
-        </div>
-        
-        <div class="menu-item" onclick="switchTab('sims', this)">
-          <i class="bx bx-chip"></i>
-          <span>شرائح الشحن (SIMs)</span>
-        </div>
-        
-        <div class="menu-header">النظام</div>
-        <div class="menu-item" onclick="switchTab('settings', this)">
-          <i class="bx bx-cog"></i>
-          <span>إعدادات السيرفر</span>
-        </div>
-        
-        <div class="menu-item" onclick="logoutAdmin()">
-          <i class="bx bx-power-off text-danger"></i>
-          <span class="text-danger">تسجيل الخروج</span>
-        </div>
-      </div>
     </div>
-    
-    <!-- Main Content Area -->
-    <div class="main-view">
-      <!-- Navbar -->
-      <div class="navbar">
-        <div class="nav-right">
-          <!-- Mobile Menu Toggle Button -->
-          <button class="btn-toggle-sidebar" id="btnToggleSidebar" onclick="toggleSidebarMenu(event)" style="display: none; border: none; background: transparent; font-size: 1.75rem; color: var(--text-main); cursor: pointer; padding: 0.5rem; outline: none; margin-left: 0.5rem;">
-            <i class="bx bx-menu"></i>
-          </button>
-          <div class="user-profile">
-            <div class="user-avatar">A</div>
-            <div>
-              <div style="font-weight: 600; font-size: 0.9rem; color: #566a7f;">المدير العام</div>
-              <div style="font-size: 0.75rem; color: #a1acb8;">لوحة الآدمن</div>
+    <div class="menu-inner-shadow"></div>
+    <ul class="menu-inner py-1">
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">الرئيسية</span></li>
+            <li class="menu-item active">
+                <a href="javascript:void(0);" class="menu-link " onclick="switchTab('dashboard', this)">
+                    <i class="menu-icon tf-icons bx bx-home-circle "></i>
+                    <div>لوحة التحكم</div>
+                </a>
+            </li>
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link " onclick="switchTab('flexy-recharge', this)">
+                    <i class="menu-icon tf-icons bx bx-mobile-alt "></i>
+                    <div>فليكسي</div>
+                </a>
+            </li>
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link " onclick="switchTab('idoom-recharge', this)">
+                    <i class="menu-icon tf-icons bx bx-wifi "></i>
+                    <div>تفعيل إيدوم تلقائياً</div>
+                </a>
+            </li><li class="menu-header small text-uppercase"><span class="menu-header-text">إدارة المخزون</span></li>
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link " onclick="switchTab('cards', this)">
+                    <i class="menu-icon tf-icons bx bx-card "></i>
+                    <div>بطاقات التعبئة</div>
+                </a>
+            </li><li class="menu-header small text-uppercase"><span class="menu-header-text">المبيعات والشبكة</span></li>
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link " onclick="switchTab('transactions', this)">
+                    <i class="menu-icon tf-icons bx bx-transfer-alt "></i>
+                    <div>سجل العمليات</div>
+                </a>
+            </li>
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link " onclick="switchTab('agents', this)">
+                    <i class="menu-icon tf-icons bx bx-group "></i>
+                    <div>الزبائن والموزعين</div>
+                </a>
+            </li>
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link " onclick="switchTab('sims', this)">
+                    <i class="menu-icon tf-icons bx bx-chip "></i>
+                    <div>شرائح الشحن (SIMs)</div>
+                </a>
+            </li><li class="menu-header small text-uppercase"><span class="menu-header-text">النظام</span></li>
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link " onclick="switchTab('settings', this)">
+                    <i class="menu-icon tf-icons bx bx-cog "></i>
+                    <div>إعدادات السيرفر</div>
+                </a>
+            </li>
+            <li class="menu-item ">
+                <a href="javascript:void(0);" class="menu-link text-danger" onclick="logoutAdmin()">
+                    <i class="menu-icon tf-icons bx bx-power-off text-danger text-danger"></i>
+                    <div>تسجيل الخروج</div>
+                </a>
+            </li>
+    </ul>
+</aside>
+
+            <!-- Sidebar goes here -->
+            <div class="layout-page">
+<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" onclick="$('#layout-menu').toggleClass('layout-menu-expanded')">
+            <i class="bx bx-menu bx-sm"></i>
+        </a>
+    </div>
+    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+        <div class="navbar-nav align-items-center">
+            <div class="nav-item d-flex align-items-center">
+                <span class="badge bg-success" id="serverStatusBadge">
+                    <i class="fas fa-circle me-1"></i> متصل بالسيرفر
+                </span>
             </div>
-          </div>
         </div>
-        
-        <div class="nav-left">
-          <span class="status-badge status-online" id="serverStatusBadge">
-            <i class="fas fa-circle me-1"></i> متصل بالسيرفر
-          </span>
-        </div>
-      </div>
-      
-      <!-- Content Wrapper -->
-      <div class="content-wrapper">
-        
-        <!-- ==================== TAB 1: DASHBOARD ==================== -->
-        <div id="tab-dashboard" class="tab-panel active">
+        <ul class="navbar-nav flex-row align-items-center ms-auto">
+            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px;">
+                            A
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+                <!-- Navbar goes here -->
+                <div class="content-wrapper">
+                    <div class="container-xxl flex-grow-1 container-p-y" id="main-content-container">
+                        <!-- Content goes here -->
+                    <div id="tab-dashboard" class="tab-panel active">
           <!-- Stats Widgets Grid -->
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-icon" style="background: rgba(113, 221, 55, 0.15); color: var(--success);">
+          <div class="row mb-4">
+            <div class="col-lg-3 col-md-6 col-12 mb-4"><div class="card h-100 mb-4">
+                <div class="card-body d-flex align-items-center">
+                    <div class="avatar flex-shrink-0 me-3" style="background: rgba(113, 221, 55, 0.15); color: var(--success); width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 0.375rem;">
                 <i class="bx bx-wallet"></i>
               </div>
-              <span class="stat-title">إجمالي الرصيد (مجموع الشرائح)</span>
-              <span class="stat-value" id="statsTotalBalance">0.00 DA</span>
-            </div>
+                    <div>
+                        <span class="d-block mb-1 text-muted" style="font-size: 14px;">إجمالي الرصيد (مجموع الشرائح)</span>
+                        <h4 class="card-title text-nowrap mb-2 fw-bold" id="statsTotalBalance">0.00 DA</h4>
+                    </div>
+                </div>
+            </div></div>
             
-            <div class="stat-card">
-              <div class="stat-icon" style="background: rgba(105, 108, 255, 0.15); color: var(--primary);">
+            <div class="col-lg-3 col-md-6 col-12 mb-4"><div class="card h-100 mb-4">
+                <div class="card-body d-flex align-items-center">
+                    <div class="avatar flex-shrink-0 me-3" style="background: rgba(105, 108, 255, 0.15); color: var(--primary); width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 0.375rem;">
                 <i class="bx bx-chip"></i>
               </div>
-              <span class="stat-title">الشرائح المتصلة</span>
-              <span class="stat-value" id="statsActiveSIMs">0 / 0</span>
-            </div>
+                    <div>
+                        <span class="d-block mb-1 text-muted" style="font-size: 14px;">الشرائح المتصلة</span>
+                        <h4 class="card-title text-nowrap mb-2 fw-bold" id="statsActiveSIMs">0 / 0</h4>
+                    </div>
+                </div>
+            </div></div>
             
-            <div class="stat-card">
-              <div class="stat-icon" style="background: rgba(3, 195, 236, 0.15); color: var(--info);">
+            <div class="col-lg-3 col-md-6 col-12 mb-4"><div class="card h-100 mb-4">
+                <div class="card-body d-flex align-items-center">
+                    <div class="avatar flex-shrink-0 me-3" style="background: rgba(3, 195, 236, 0.15); color: var(--info); width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 0.375rem;">
                 <i class="bx bx-file"></i>
               </div>
-              <span class="stat-title">بطاقات إيدوم المتوفرة</span>
-              <span class="stat-value" id="statsIdoomCards">0 بطاقة</span>
-            </div>
+                    <div>
+                        <span class="d-block mb-1 text-muted" style="font-size: 14px;">بطاقات إيدوم المتوفرة</span>
+                        <h4 class="card-title text-nowrap mb-2 fw-bold" id="statsIdoomCards">0 بطاقة</h4>
+                    </div>
+                </div>
+            </div></div>
             
-            <div class="stat-card">
-              <div class="stat-icon" style="background: rgba(255, 171, 0, 0.15); color: var(--warning);">
+            <div class="col-lg-3 col-md-6 col-12 mb-4"><div class="card h-100 mb-4">
+                <div class="card-body d-flex align-items-center">
+                    <div class="avatar flex-shrink-0 me-3" style="background: rgba(255, 171, 0, 0.15); color: var(--warning); width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 0.375rem;">
                 <i class="bx bx-package"></i>
               </div>
-              <span class="stat-title">بطاقات موبيليس المتوفرة</span>
-              <span class="stat-value" id="statsMobilisCards">0 بطاقة</span>
-            </div>
+                    <div>
+                        <span class="d-block mb-1 text-muted" style="font-size: 14px;">بطاقات موبيليس المتوفرة</span>
+                        <h4 class="card-title text-nowrap mb-2 fw-bold" id="statsMobilisCards">0 بطاقة</h4>
+                    </div>
+                </div>
+            </div></div>
           </div>
           
           <!-- Recent Transactions -->
-          <div class="card" style="margin-top: 1.5rem;">
-            <div class="card-header">
-              <span class="card-title">آخر العمليات المنجزة</span>
+          <div class="card mb-4" style="margin-top: 1.5rem;">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <span class="card-title m-0 fw-bold text-primary">آخر العمليات المنجزة</span>
               <button class="btn btn-secondary btn-sm" onclick="switchTab('transactions')"><i class="bx bx-list-ul"></i> عرض السجل بالكامل</button>
             </div>
-            <div class="table-responsive">
-              <table>
+            <div class="table-responsive text-nowrap">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th>المشترك</th>
@@ -170,26 +210,23 @@
               </table>
             </div>
           </div>
-        </div>
-        
-        <!-- ==================== TAB: FLEXY RECHARGE ==================== -->
-        <div id="tab-flexy-recharge" class="tab-panel">
+        </div><div id="tab-flexy-recharge" class="tab-panel">
           <div style="max-width: 850px; margin: 0 auto;">
             <!-- Quick Action Box -->
-            <div class="card">
-              <div class="card-header">
-                <span class="card-title">شحن فليكسي (Flexy)</span>
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <span class="card-title m-0 fw-bold text-primary">شحن فليكسي (Flexy)</span>
               </div>
               <div class="card-body">
                 <div class="recharge-form-box">
                   <!-- Phone / Subscriber Input Group -->
-                  <div class="form-group">
+                  <div class="mb-3">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                       <label class="form-label" for="rechargePhone" style="margin-bottom: 0;">رقم الهاتف / رقم المشترك</label>
                       <span id="operatorLogoText" class="badge badge-secondary" style="font-size: 0.9rem; font-weight: bold; padding: 0.25rem 0.75rem;">تحديد تلقائي...</span>
                     </div>
                     <div style="position: relative; display: flex; align-items: center; justify-content: center;">
-                      <input type="text" class="form-control" id="rechargePhone" placeholder="أدخل رقم الهاتف" style="font-size: 3.2rem; text-align: center; font-weight: 900; letter-spacing: 2px; padding: 0.6rem 3rem; border: 4px solid var(--primary); box-shadow: 0 6px 18px rgba(105, 108, 255, 0.2); height: auto; border-radius: 0.6rem; font-family: 'Rubik', monospace; color: #566a7f;" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, ''); detectOperatorFromInput()" />
+                      <input type="text" class="form-control" id="rechargePhone" placeholder="أدخل رقم الهاتف" style="font-size: 3.2rem; text-align: center; font-weight: 900; letter-spacing: 2px; padding: 0.6rem 3rem; border: 4px solid var(--primary); box-shadow: 0 6px 18px rgba(105, 108, 255, 0.2); height: auto; border-radius: 0.6rem; font-family: 'Rubik', monospace; color: #566a7f;" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, ''); detectOperatorFromInput()">
                       <button id="btnClearPhone" onclick="clearPhoneInput()" style="position: absolute; left: 15px; border: none; background: transparent; color: #a1b0cb; font-size: 2rem; cursor: pointer; display: none; padding: 0; outline: none;"><i class="bx bx-x-circle"></i></button>
                     </div>
                   </div>
@@ -203,10 +240,10 @@
                   </div>
                   
                   <!-- Amount Input and Offers Trigger Row -->
-                  <div class="form-group">
+                  <div class="mb-3">
                     <label class="form-label" for="rechargeAmount">المبلغ (دج)</label>
                     <div style="display: flex; gap: 0.75rem; align-items: center;">
-                      <input type="number" class="form-control" id="rechargeAmount" placeholder="100" style="font-size: 1.8rem; font-weight: 900; padding: 0.45rem 0.8rem; width: 160px; text-align: center; height: auto; border: 2.5px solid var(--primary); color: #566a7f;" oninput="clearSelectedOffer()" />
+                      <input type="number" class="form-control" id="rechargeAmount" placeholder="100" style="font-size: 1.8rem; font-weight: 900; padding: 0.45rem 0.8rem; width: 160px; text-align: center; height: auto; border: 2.5px solid var(--primary); color: #566a7f;" oninput="clearSelectedOffer()">
                       <button class="btn btn-secondary" id="btnShowOffers" onclick="fetchLiveOffers()" style="white-space: nowrap; font-size: 1.1rem; padding: 0.6rem 1.25rem; min-width: 140px; height: auto;"><i class="bx bx-gift"></i> إظهار العروض</button>
                     </div>
                   </div>
@@ -222,17 +259,17 @@
             </div>
             
             <!-- Flexy Transactions List Box -->
-            <div class="card" style="margin-top: 1.5rem;">
-              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid #e9ecef;">
-                <span class="card-title" style="margin-bottom: 0; font-size: 1.15rem; font-weight: bold; color: var(--primary);"><i class="bx bx-history" style="font-size: 1.3rem; vertical-align: middle; margin-left: 0.3rem;"></i> سجل العمليات الأخير</span>
+            <div class="card mb-4" style="margin-top: 1.5rem;">
+              <div class="card-header d-flex justify-content-between align-items-center" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid #e9ecef;">
+                <span class="card-title m-0 fw-bold text-primary" style="margin-bottom: 0; font-size: 1.15rem; font-weight: bold; color: var(--primary);"><i class="bx bx-history" style="font-size: 1.3rem; vertical-align: middle; margin-left: 0.3rem;"></i> سجل العمليات الأخير</span>
                 <!-- Search Box -->
                 <div style="display: flex; gap: 0.5rem; align-items: center;">
-                  <input type="text" class="form-control form-control-sm" id="searchFlexyTxPhone" placeholder="بحث برقم الهاتف..." style="width: 180px; font-weight: bold; font-family: monospace; font-size: 0.95rem; text-align: center;" oninput="loadFlexyTransactionsList()" />
+                  <input type="text" class="form-control form-control-sm" id="searchFlexyTxPhone" placeholder="بحث برقم الهاتف..." style="width: 180px; font-weight: bold; font-family: monospace; font-size: 0.95rem; text-align: center;" oninput="loadFlexyTransactionsList()">
                   <button class="btn btn-sm btn-primary" onclick="loadFlexyTransactionsList()"><i class="bx bx-search"></i></button>
                 </div>
               </div>
               <div class="card-body" style="padding: 0;">
-                <div class="table-responsive">
+                <div class="table-responsive text-nowrap">
                   <table class="table table-hover" style="margin-bottom: 0; font-size: 0.9rem;">
                     <thead>
                       <tr style="background: #f8f9fa;">
@@ -254,22 +291,19 @@
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- ==================== TAB: IDOOM AUTO RECHARGE ==================== -->
-        <div id="tab-idoom-recharge" class="tab-panel">
+        </div><div id="tab-idoom-recharge" class="tab-panel">
           <div style="max-width: 850px; margin: 0 auto;">
-            <div class="card">
-              <div class="card-header">
-                <span class="card-title">تفعيل وشحن إيدوم تلقائياً (Idoom ADSL / Fibre / 4G)</span>
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <span class="card-title m-0 fw-bold text-primary">تفعيل وشحن إيدوم تلقائياً (Idoom ADSL / Fibre / 4G)</span>
               </div>
               <div class="card-body">
                 <div class="recharge-form-box">
                   <!-- Subscriber Input Group -->
-                  <div class="form-group">
+                  <div class="mb-3">
                     <label class="form-label" for="idoomPhone">رقم حساب الإنترنت / رقم الهاتف الثابت (إيدوم)</label>
                     <div style="position: relative;">
-                      <input type="text" class="form-control" id="idoomPhone" placeholder="مثال: 021XXXXXX أو 21321XXXXXX" style="font-size: 2.2rem; text-align: center; font-weight: bold; letter-spacing: 1.5px; padding: 0.8rem 1rem; border: 2px solid var(--border-color); height: auto; border-radius: 0.5rem;" oninput="onIdoomInputChanged()" />
+                      <input type="text" class="form-control" id="idoomPhone" placeholder="مثال: 021XXXXXX أو 21321XXXXXX" style="font-size: 2.2rem; text-align: center; font-weight: bold; letter-spacing: 1.5px; padding: 0.8rem 1rem; border: 2px solid var(--border-color); height: auto; border-radius: 0.5rem;" oninput="onIdoomInputChanged()">
                     </div>
                   </div>
 
@@ -291,35 +325,32 @@
                   </div>
 
                   <!-- Selected Card Value Display -->
-                  <div class="form-group" id="idoomSelectedValueGroup" style="display: none;">
+                  <div class="mb-3" id="idoomSelectedValueGroup" style="display: none;">
                     <label class="form-label">القيمة المحددة للتعبئة (دج)</label>
-                    <input type="text" class="form-control" id="idoomSelectedAmount" readonly style="font-size: 1.5rem; font-weight: bold; text-align: center; background: #f8f9fa; padding: 0.5rem;" />
+                    <input type="text" class="form-control" id="idoomSelectedAmount" readonly="" style="font-size: 1.5rem; font-weight: bold; text-align: center; background: #f8f9fa; padding: 0.5rem;">
                   </div>
                   
                   <!-- Button Triggers -->
                   <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
                     <button class="btn btn-secondary" id="btnCheckIdoomBill" onclick="checkIdoomBill()" style="flex: 1; padding: 0.75rem; font-size: 1.1rem;"><i class="bx bx-search-alt"></i> فحص الفاتورة</button>
-                    <button class="btn btn-primary" id="btnSubmitIdoom" onclick="executeIdoomActivation()" disabled style="flex: 2; padding: 0.75rem; font-size: 1.1rem; font-weight: 600;"><i class="bx bx-paper-plane"></i> شحن وتفعيل تلقائي</button>
+                    <button class="btn btn-primary" id="btnSubmitIdoom" onclick="executeIdoomActivation()" disabled="" style="flex: 2; padding: 0.75rem; font-size: 1.1rem; font-weight: 600;"><i class="bx bx-paper-plane"></i> شحن وتفعيل تلقائي</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- ==================== TAB 2: CARDS INVENTORY ==================== -->
-        <div id="tab-cards" class="tab-panel">
+        </div><div id="tab-cards" class="tab-panel">
           <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem;">
             
             <!-- Bulk Upload Card Form -->
-            <div class="card">
-              <div class="card-header">
-                <span class="card-title">تحميل بطاقات جديدة دفعة واحدة</span>
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <span class="card-title m-0 fw-bold text-primary">تحميل بطاقات جديدة دفعة واحدة</span>
               </div>
               <div class="card-body">
                 <div id="uploadSummary" class="upload-summary"></div>
                 
-                <div class="form-group">
+                <div class="mb-3">
                   <label class="form-label" for="uploadCategory">نوع البطاقة</label>
                   <select id="uploadCategory" class="form-control">
                     <option value="idoom">إيدوم إنترنت (Idoom)</option>
@@ -327,7 +358,7 @@
                   </select>
                 </div>
                 
-                <div class="form-group">
+                <div class="mb-3">
                   <label class="form-label" for="uploadValue">قيمة البطاقة (دج)</label>
                   <select id="uploadValue" class="form-control">
                     <option value="500">500 دج</option>
@@ -338,12 +369,12 @@
                   </select>
                 </div>
 
-                <div class="form-group">
+                <div class="mb-3">
                   <label class="form-label" for="uploadPurchasePrice">سعر الشراء الفعلي (اختياري)</label>
-                  <input type="number" class="form-control" id="uploadPurchasePrice" placeholder="مثال: 950" />
+                  <input type="number" class="form-control" id="uploadPurchasePrice" placeholder="مثال: 950">
                 </div>
                 
-                <div class="form-group">
+                <div class="mb-3">
                   <label class="form-label" for="uploadText">قائمة الأكواد والبطاقات</label>
                   <textarea id="uploadText" class="form-control" placeholder="ألصق الكروت هنا. سطر لكل كرت.
 أمثلة مقبولة:
@@ -357,9 +388,9 @@
             </div>
             
             <!-- Cards Table & Filter -->
-            <div class="card">
-              <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
-                <span class="card-title">مخزون بطاقات التعبئة</span>
+            <div class="card mb-4">
+              <div class="card-header d-flex justify-content-between align-items-center" style="flex-wrap: wrap; gap: 1rem;">
+                <span class="card-title m-0 fw-bold text-primary">مخزون بطاقات التعبئة</span>
                 <div style="display: flex; gap: 0.5rem; align-items: center;">
                   <select id="filterCardCategory" class="form-control" style="width: 130px;" onchange="loadCardsList()">
                     <option value="">جميع الأنواع</option>
@@ -374,8 +405,8 @@
                   <button class="btn btn-danger btn-sm" onclick="clearCardsPrompt()"><i class="bx bx-trash"></i> تفريغ</button>
                 </div>
               </div>
-              <div class="table-responsive">
-                <table>
+              <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
                   <thead>
                     <tr>
                       <th>الكود (PIN)</th>
@@ -395,20 +426,17 @@
               <div class="pagination" id="cardsPagination"></div>
             </div>
           </div>
-        </div>
-        
-        <!-- ==================== TAB 3: TRANSACTIONS RECORD ==================== -->
-        <div id="tab-transactions" class="tab-panel">
-          <div class="card">
-            <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
-              <span class="card-title">سجل العمليات والتحويلات</span>
+        </div><div id="tab-transactions" class="tab-panel">
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center" style="flex-wrap: wrap; gap: 1rem;">
+              <span class="card-title m-0 fw-bold text-primary">سجل العمليات والتحويلات</span>
               <div style="display: flex; gap: 0.5rem;">
-                <input type="text" class="form-control" id="searchTxPhone" placeholder="بحث برقم الهاتف..." style="width: 180px;" oninput="loadTransactionsList()" />
+                <input type="text" class="form-control" id="searchTxPhone" placeholder="بحث برقم الهاتف..." style="width: 180px;" oninput="loadTransactionsList()">
                 <button class="btn btn-secondary btn-sm" onclick="loadTransactionsList()"><i class="bx bx-refresh"></i> تحديث</button>
               </div>
             </div>
-            <div class="table-responsive">
-              <table>
+            <div class="table-responsive text-nowrap">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th>المشترك / الهاتف</th>
@@ -426,17 +454,14 @@
             </div>
             <div class="pagination" id="transactionsPagination"></div>
           </div>
-        </div>
-        
-        <!-- ==================== TAB 4: AGENTS MANAGEMENT ==================== -->
-        <div id="tab-agents" class="tab-panel">
-          <div class="card">
-            <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
-              <span class="card-title">الموزعون والمشتركون</span>
+        </div><div id="tab-agents" class="tab-panel">
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center" style="flex-wrap: wrap; gap: 1rem;">
+              <span class="card-title m-0 fw-bold text-primary">الموزعون والمشتركون</span>
               <button class="btn btn-primary btn-sm" onclick="openAddAgentModal()"><i class="bx bx-user-plus"></i> إضافة زبون جديد</button>
             </div>
-            <div class="table-responsive">
-              <table>
+            <div class="table-responsive text-nowrap">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th>الاسم</th>
@@ -455,13 +480,10 @@
               </table>
             </div>
           </div>
-        </div>
-        
-        <!-- ==================== TAB 5: SIM CARDS ==================== -->
-        <div id="tab-sims" class="tab-panel">
-          <div class="card">
-            <div class="card-header" style="flex-wrap: wrap; gap: 1rem;">
-              <span class="card-title">شرائح الشحن ومفاتيح المودم</span>
+        </div><div id="tab-sims" class="tab-panel">
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center" style="flex-wrap: wrap; gap: 1rem;">
+              <span class="card-title m-0 fw-bold text-primary">شرائح الشحن ومفاتيح المودم</span>
               <button class="btn btn-primary btn-sm" onclick="openAddSimModal()"><i class="bx bx-plus"></i> ربط شريحة جديدة</button>
             </div>
             <div class="card-body">
@@ -470,65 +492,60 @@
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- ==================== TAB 6: SETTINGS ==================== -->
-        <div id="tab-settings" class="tab-panel">
-          <div class="card">
-            <div class="card-header">
-              <span class="card-title">إعدادات خادم توبال فليكسي</span>
+        </div><div id="tab-settings" class="tab-panel">
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <span class="card-title m-0 fw-bold text-primary">إعدادات خادم توبال فليكسي</span>
             </div>
             <div class="card-body" style="max-width: 600px;">
               <div id="settingsAlert" class="upload-summary" style="background-color: #e3f2fd; border-color: #90caf9; color: #0d47a1;"></div>
               
-              <div class="form-group">
+              <div class="mb-3">
                 <label class="form-label" for="settingsBotToken">توكن بوت التيليجرام (Bot Token)</label>
-                <input type="text" class="form-control" id="settingsBotToken" placeholder="توكن البوت من BotFather" />
+                <input type="text" class="form-control" id="settingsBotToken" placeholder="توكن البوت من BotFather">
               </div>
               
-              <div class="form-group">
+              <div class="mb-3">
                 <label class="form-label" for="settingsAdminId">معرف الأدمن تيليجرام (Admin Chat ID)</label>
-                <input type="text" class="form-control" id="settingsAdminId" placeholder="معرف شات الأدمن لتلقي الإشعارات" />
+                <input type="text" class="form-control" id="settingsAdminId" placeholder="معرف شات الأدمن لتلقي الإشعارات">
               </div>
 
-              <div class="form-group">
+              <div class="mb-3">
                 <label class="form-label" for="settingsAdminSecret">كلمة مرور الآدمن (Admin Secret)</label>
-                <input type="text" class="form-control" id="settingsAdminSecret" placeholder="لتسجيل الدخول للوحة الويب" />
+                <input type="text" class="form-control" id="settingsAdminSecret" placeholder="لتسجيل الدخول للوحة الويب">
               </div>
 
-              <div class="form-group">
+              <div class="mb-3">
                 <label class="form-label" for="settingsCaptchaKey">مفتاح 2Captcha لحل الكابتشا</label>
-                <input type="text" class="form-control" id="settingsCaptchaKey" placeholder="Captcha API Key" />
+                <input type="text" class="form-control" id="settingsCaptchaKey" placeholder="Captcha API Key">
               </div>
               
               <h5 style="margin: 1.5rem 0 1rem 0; font-weight: 700; color: #566a7f; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">صيغ الأكواد الافتراضية (USSD Templates)</h5>
               
-              <div class="form-group">
+              <div class="mb-3">
                 <label class="form-label" for="settingsUssdMobilis">صيغة تحويل موبيليس</label>
-                <input type="text" class="form-control" id="settingsUssdMobilis" value="*630*{phone}*{type}*{amount}*0000#" />
+                <input type="text" class="form-control" id="settingsUssdMobilis" value="*630*{phone}*{type}*{amount}*0000#">
               </div>
 
-              <div class="form-group">
+              <div class="mb-3">
                 <label class="form-label" for="settingsUssdOoredoo">صيغة تحويل أوريدو</label>
-                <input type="text" class="form-control" id="settingsUssdOoredoo" value="*115*{phone}*{amount}*0000#" />
+                <input type="text" class="form-control" id="settingsUssdOoredoo" value="*115*{phone}*{amount}*0000#">
               </div>
 
-              <div class="form-group">
+              <div class="mb-3">
                 <label class="form-label" for="settingsUssdDjezzy">صيغة تحويل جيزي</label>
-                <input type="text" class="form-control" id="settingsUssdDjezzy" value="*760*{phone}*{amount}*00000#" />
+                <input type="text" class="form-control" id="settingsUssdDjezzy" value="*760*{phone}*{amount}*00000#">
               </div>
               
               <button class="btn btn-primary w-100" onclick="saveSettings()"><i class="bx bx-save"></i> حفظ وتطبيق الإعدادات</button>
             </div>
           </div>
+        </div></div>
+                </div>
+            </div>
         </div>
-        
-      </div>
     </div>
-  </div>
-
-  <!-- Modal backdrop (Reuse modal block for different inputs) -->
-  <div class="modal-backdrop" id="modalBackdrop">
+<div class="modal-backdrop" id="modalBackdrop">
     <!-- Modal Add SIM -->
     <div class="modal-content" id="modalAddSim" style="display: none;">
       <div class="modal-header">
@@ -538,7 +555,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label class="form-label" for="simIp">عنوان الآيباي (Modem IP)</label>
-          <input type="text" class="form-control" id="simIp" placeholder="مثال: 192.168.8.1" />
+          <input type="text" class="form-control" id="simIp" placeholder="مثال: 192.168.8.1">
         </div>
         <div class="form-group">
           <label class="form-label" for="simOperator">المتعامل</label>
@@ -551,7 +568,7 @@
         </div>
         <div class="form-group">
           <label class="form-label" for="simPin">كود شفرة التحويل (Modem Pin / SIM PIN)</label>
-          <input type="text" class="form-control" id="simPin" placeholder="0000" value="0000" />
+          <input type="text" class="form-control" id="simPin" placeholder="0000" value="0000">
         </div>
       </div>
       <div class="modal-footer">
@@ -569,19 +586,19 @@
       <div class="modal-body">
         <div class="form-group">
           <label class="form-label" for="agentName">الاسم الكامل</label>
-          <input type="text" class="form-control" id="agentName" placeholder="الاسم واللقب" />
+          <input type="text" class="form-control" id="agentName" placeholder="الاسم واللقب">
         </div>
         <div class="form-group">
           <label class="form-label" for="agentPhone">رقم الهاتف</label>
-          <input type="text" class="form-control" id="agentPhone" placeholder="06XXXXXXXX" />
+          <input type="text" class="form-control" id="agentPhone" placeholder="06XXXXXXXX">
         </div>
         <div class="form-group">
           <label class="form-label" for="agentTg">معرف التيليجرام (Telegram ID)</label>
-          <input type="text" class="form-control" id="agentTg" placeholder="معرف المستخدم (أرقام)" />
+          <input type="text" class="form-control" id="agentTg" placeholder="معرف المستخدم (أرقام)">
         </div>
         <div class="form-group">
           <label class="form-label" for="agentBalance">الرصيد الابتدائي (DA)</label>
-          <input type="number" class="form-control" id="agentBalance" placeholder="0.00" value="0" />
+          <input type="number" class="form-control" id="agentBalance" placeholder="0.00" value="0">
         </div>
         <div class="form-group">
           <label class="form-label" for="agentTier">فئة التسعير (Tier)</label>
@@ -605,14 +622,14 @@
         <button class="btn btn-icon btn-sm" onclick="closeModal()"><i class="bx bx-x"></i></button>
       </div>
       <div class="modal-body">
-        <input type="hidden" id="editAgentId" />
+        <input type="hidden" id="editAgentId">
         <div class="form-group">
           <label class="form-label" for="editAgentName">الاسم الكامل (للعرض)</label>
-          <input type="text" class="form-control" id="editAgentName" readonly />
+          <input type="text" class="form-control" id="editAgentName" readonly="">
         </div>
         <div class="form-group">
           <label class="form-label" for="editAgentBalance">تعديل الرصيد الإجمالي (DA)</label>
-          <input type="number" class="form-control" id="editAgentBalance" placeholder="مثال: 5000" />
+          <input type="number" class="form-control" id="editAgentBalance" placeholder="مثال: 5000">
         </div>
         <div class="form-group">
           <label class="form-label" for="editAgentStatus">الحالة</label>
@@ -635,12 +652,12 @@
       </div>
     </div>
 
-  </div>
-
-  <!-- Sidebar Backdrop for Mobile view -->
-  <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebarMenu(event)"></div>
-
-  <!-- Core JavaScript -->
-  <script src="js/app.js"></script>
-</body>
-</html>
+  </div><script src="js/app.js"></script>
+<script>
+    // Sneat mobile menu toggle fix for our custom implementation
+    $(document).on('click', '.layout-menu-toggle', function(e) {
+        e.preventDefault();
+        window.Helpers.toggleCollapsed();
+    });
+</script>
+</body></html>
